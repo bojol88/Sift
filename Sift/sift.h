@@ -116,5 +116,8 @@ void  render(unsigned char* img, char* out_filename,
              pointList* keyPointList,
              float sigmas[MAX_O][MAX_S]);
 
+
+void AppelSift(unsigned char* input, int xsize, int ysize);
+
 #endif//_SIFT_H_
 
