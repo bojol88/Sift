@@ -79,7 +79,7 @@ void sift(unsigned char* img,
           int* octavesW, int* octavesH,
           float scaleSpace[][MAX_S][MAX_OCTAVE_SIZE],
           float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
-          pointList* keyPointList, int O, int S);
+		  pointList* keyPointList, int O, int S, unsigned char* r, unsigned char* g, unsigned char* b);
 
 void buildOB(unsigned char* img,
              unsigned char octaves[][MAX_OCTAVE_SIZE],
@@ -114,10 +114,10 @@ void write_keypoints(FILE* fp,
 void  render(unsigned char* img, char* out_filename,
              int* octavesW, int* octavesH,
              pointList* keyPointList,
-             float sigmas[MAX_O][MAX_S]);
+			 float sigmas[MAX_O][MAX_S], unsigned char* r, unsigned char* g, unsigned char* b);
 
 
-void AppelSift(unsigned char* input, int xsize, int ysize);
+void AppelSift(unsigned char* input, int xsize, int ysize, unsigned char* r, unsigned char* g, unsigned char* b);
 
 #endif//_SIFT_H_
 

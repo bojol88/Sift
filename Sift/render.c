@@ -4,7 +4,8 @@
 void  render(unsigned char* img, char* out_filename,
              int* octavesW, int* octavesH,
              pointList* keyPointList,
-             float sigmas[MAX_O][MAX_S]){
+			 float sigmas[MAX_O][MAX_S], 
+			 unsigned char* r, unsigned char* g, unsigned char* b){
   
     // common variables
     int i, j;
@@ -71,9 +72,18 @@ void  render(unsigned char* img, char* out_filename,
         draw_red_circle(&imgPPM, (int)x, (int)y, cR);
         draw_red_orientation(&imgPPM, (int)x, (int)y, keyPtr.ori, cR);
     }
+	for (i = 0; i < h; i++)
+	{
+		for (j = 0; j < w; j++)
+		{
+			r[i*w + j] = imgPPM.img_r[i*w + j];
+			g[i*w + j] = imgPPM.img_g[i*w + j];
+			b[i*w + j] = imgPPM.img_b[i*w + j];
+		}
+	}
 
     // write rendered image to output
-    write_ppm(imgPPM.img_r, imgPPM.img_g, imgPPM.img_b, w, h, out_filename);
+     write_ppm(imgPPM.img_r, imgPPM.img_g, imgPPM.img_b, w, h, out_filename);
 
     // free allocated memory
     free(imgPPM.img_r);

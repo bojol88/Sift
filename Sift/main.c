@@ -10,7 +10,9 @@ int
 main(int argc, char* argv[]) {
     int xsize, ysize;
 	unsigned char* in_img;
-	//unsigned char* output = NULL;
+	unsigned char* r = NULL;
+	unsigned char* g = NULL;
+	unsigned char* b = NULL;
 
 
 	in_img = read_pgm(&xsize, &ysize, "akiyo1.pgm");
@@ -23,9 +25,12 @@ main(int argc, char* argv[]) {
     }
 
     assert(in_img != NULL);
+	r = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
+	g = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
+	b = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 
-	AppelSift(in_img, xsize, ysize);
-    
+	AppelSift(in_img, xsize, ysize,r,g,b);
+	write_ppm(r, g, b, xsize, ysize, "A_main.pgm");
     return 0;
 }// main()
 
