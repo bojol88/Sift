@@ -83,7 +83,7 @@ void  render(unsigned char* img, char* out_filename,
 	}
 
     // write rendered image to output
-     write_ppm(imgPPM.img_r, imgPPM.img_g, imgPPM.img_b, w, h, out_filename);
+    // write_ppm(imgPPM.img_r, imgPPM.img_g, imgPPM.img_b, w, h, out_filename);
 
     // free allocated memory
     free(imgPPM.img_r);

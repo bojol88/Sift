@@ -173,7 +173,7 @@ void AppelSift(unsigned char* input, int xsize, int ysize, unsigned char* r, uns
 	// Setting the original number of detected points to 0
 	keyPointList_g.size = 0;
 
-	sift(input, xsize, ysize, "A_Results.pgm", octaves_g, octavesW_g,
+	sift(input, xsize, ysize, "Resultats/A_Results.pgm", octaves_g, octavesW_g,
 		octavesH_g, scaleSpace_g, dog_g, &keyPointList_g,
 		NUMBER_OF_OCTAVES, NUMBER_OF_SCALES, r,g,b);
 }
