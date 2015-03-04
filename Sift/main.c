@@ -52,13 +52,8 @@ main(int argc, char* argv[]) {
     int w, h, i;
     unsigned char* in_img;
 
-    if (argc != 3) {
-        fprintf(
-            stderr, 
-            "Usage: eca-sift input-image output-image\n");
-        exit(1);
-    }
-    in_img = read_pgm(&w, &h, argv[1]);
+
+    in_img = read_pgm(&w, &h, "akiyo1.pgm");
 
     if (w != 352 || h != 288) {
         fprintf(
@@ -83,7 +78,7 @@ main(int argc, char* argv[]) {
     // Setting the original number of detected points to 0
     keyPointList_g.size = 0;
 
-    sift(in_img, w, h, argv[2], octaves_g, octavesW_g,
+    sift(in_img, w, h, "Resultat.pgm", octaves_g, octavesW_g,
             octavesH_g, scaleSpace_g, dog_g, &keyPointList_g,
             NUMBER_OF_OCTAVES, NUMBER_OF_SCALES);
 
