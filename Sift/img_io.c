@@ -5,6 +5,8 @@
 
 #include "img_io.h"
 
+static int j = 1;
+
 unsigned char*
 read_pgm(int* w, int* h, const char * filename){
     unsigned char* data;
@@ -67,11 +69,10 @@ write_pgm(unsigned char* data, int w, int h, const char* filename){
 }// write_pgm ()
 
 void
-write_ppm(unsigned char* r, unsigned char* g, unsigned char* b, int w, int h,
-          const char * filename) {
+write_ppm(unsigned char* r, unsigned char* g, unsigned char* b, int w, int h) {
     FILE * out_file;
     int i;
-
+	char filename[256];
     unsigned char* obuf = (unsigned char*)malloc(3*w*h*sizeof(unsigned char));
 
     for(i = 0; i < w*h; i ++){
@@ -79,6 +80,8 @@ write_ppm(unsigned char* r, unsigned char* g, unsigned char* b, int w, int h,
         obuf[3*i + 1] = g[i];
         obuf[3*i + 2] = b[i];
     }
+	sprintf(filename, "Resultats2/%d.pgm", j);
+	j++;
     out_file = fopen(filename, "wb");
     fprintf(out_file, "P6\n");
     fprintf(out_file, "%d %d\n255\n", w, h);

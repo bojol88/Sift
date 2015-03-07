@@ -30,8 +30,8 @@ main(int argc, char* argv[]) {
     assert(in_img != NULL);*/
 
 	int xsize=352, ysize=288;
-	int i=1; 
-	char nom[256];
+	//int i=1; 
+	//char nom[256];
 	unsigned char* input = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* tmp = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* r = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
@@ -48,9 +48,9 @@ main(int argc, char* argv[]) {
 
 		AppelSift(y, xsize, ysize,r,g,b);
 
-		sprintf(nom, "Resultats/%d.pgm", i);
-		write_ppm(r, g, b, xsize, ysize, nom);
-		i++;
+		//sprintf(nom, "Resultats/%d.pgm", i);
+		write_ppm(r, g, b, xsize, ysize);
+		//i++;
 	}
 
     return 0;
