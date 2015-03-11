@@ -9,14 +9,6 @@
 // scale space
 float scaleSpace_g[MAX_O][MAX_S][MAX_OCTAVE_SIZE];
 
-// scale space: equivalent with dynamic allocation
-/*for(i = 0; i < NUMBER_OF_OCTAVES; i++){
-for(j = 0; j < NUMBER_OF_SCALES; j++){
-scaleSpace[i][j] =
-(float*)malloc(octavesW_g[i] * octavesH_g[i] * sizeof(float));
-}
-}*/
-
 // difference of gaussians
 float dog_g[MAX_O][MAX_S - 1][MAX_OCTAVE_SIZE];
 
@@ -43,7 +35,7 @@ sift(unsigned char* img,
      ***********************/
     // sigma at each scale
     float sigma0 = 1.6f;
-    float sigmas[MAX_O][MAX_S];
+    float sigmas[MAX_O*MAX_S];
 
     /************************
      * Variable computation
@@ -51,7 +43,7 @@ sift(unsigned char* img,
     // gaussian sigmas at each scale
     for(i = 0; i < O; i++){
         for(j = 0; j < S; j++){
-            sigmas[i][j] = sigma0 * pow(sqrt(2.0f), (float)j/(float)(S-3) );
+            sigmas[i*MAX_S+j] = sigma0 * pow(sqrt(2.0f), (float)j/(float)(S-3) );
         }
     }
 
@@ -135,20 +127,6 @@ void AppelSift(unsigned char* input, int xsize, int ysize, unsigned char* r, uns
 	// All octaves are given the same size as the original image
 	// octavesW_g[i] * octavesH_g[i] is the actual memory necessary for octave i
 	unsigned char octaves_g[MAX_O*MAX_OCTAVE_SIZE];
-
-	// difference of gaussians: equivalent with dynamic allocation
-	/*for(i = 0; i < NUMBER_OF_OCTAVES; i++){
-	for(j = 0; j < NUMBER_OF_SCALES-1; j++){
-	dog[i][j] =
-	(float*)malloc( octavesW_g[i] * octavesH_g[i] * sizeof(float));
-	}
-	}*/
-
-	/* Octaves: equivalent with dynamic allocation
-	for(i = 0; i < NUMBER_OF_OCTAVES; i++){
-	octaves[i] = (unsigned char*)
-	malloc(octavesW[i] * octavesH[i] * sizeof(unsigned char));
-	}*/
 
 
 	// width of each octave

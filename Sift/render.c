@@ -4,7 +4,7 @@
 void  render(unsigned char* img, char* out_filename,
              int* octavesW, int* octavesH,
              pointList* keyPointList,
-			 float sigmas[MAX_O][MAX_S], 
+			 float sigmas[MAX_O*MAX_S], 
 			 unsigned char* r, unsigned char* g, unsigned char* b){
   
     // common variables
@@ -59,8 +59,7 @@ void  render(unsigned char* img, char* out_filename,
         cR = 
             (int)
             ( sigmas
-              [keyPtr.o]
-              [(int)keyPtr.s] *
+              [keyPtr.o*MAX_S+(int)keyPtr.s] *
               pow(2,keyPtr.o) );
         if(cR <= 1){ // avoid zero radius
             cR = 1;
