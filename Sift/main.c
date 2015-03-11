@@ -11,27 +11,9 @@
 
 int
 main(int argc, char* argv[]) {
-   /* int xsize, ysize;
-	unsigned char* in_img;
-	unsigned char* r = NULL;
-	unsigned char* g = NULL;
-	unsigned char* b = NULL;
-
-
-	in_img = read_pgm(&xsize, &ysize, "akiyo1.pgm");
-
-	if (xsize != 352 || ysize != 288) {
-        fprintf(
-            stderr,
-            "Only CIF pictures are supported\n");
-        exit(1);
-    }
-
-    assert(in_img != NULL);*/
 
 	int xsize=352, ysize=288;
-	//int i=1; 
-	//char nom[256];
+
 	unsigned char* input = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* tmp = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* r = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
@@ -48,9 +30,7 @@ main(int argc, char* argv[]) {
 
 		AppelSift(y, xsize, ysize,r,g,b);
 
-		//sprintf(nom, "Resultats/%d.pgm", i);
 		write_ppm(r, g, b, xsize, ysize);
-		//i++;
 	}
 
     return 0;

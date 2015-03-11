@@ -75,14 +75,14 @@ extern float* grad_buffer;
 
 void sift(unsigned char* img,
           int w, int h, char* out_filename,
-          unsigned char octaves[][MAX_OCTAVE_SIZE],
+          unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
           int* octavesW, int* octavesH,
           float scaleSpace[][MAX_S][MAX_OCTAVE_SIZE],
           float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
 		  pointList* keyPointList, int O, int S, unsigned char* r, unsigned char* g, unsigned char* b);
 
 void buildOB(unsigned char* img,
-             unsigned char octaves[][MAX_OCTAVE_SIZE],
+             unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
              int O,
              int* octavesW, int* octavesH);
 

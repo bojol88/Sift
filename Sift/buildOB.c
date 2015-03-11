@@ -20,7 +20,7 @@ void downsample(unsigned char* target,
  ******************************************/
 
 void buildOB(unsigned char* img,
-             unsigned char octaves[][MAX_OCTAVE_SIZE],
+             unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
              int O,
              int* octavesW, int* octavesH){
 
@@ -28,14 +28,14 @@ void buildOB(unsigned char* img,
     int i;
 
     // octave 0 is the original image
-    memcpy(octaves[0], img,
+    memcpy(&octaves[0], img,
            octavesW[0] * octavesH[0] *
            sizeof(unsigned char));
     // downsample for octave 1 to O
     for(i = 1; i < O; i++){
-        downsample(octaves[i],
+        downsample(&octaves[i*MAX_OCTAVE_SIZE],
                    octavesW[i], octavesH[i],
-                   octaves[i-1],
+				   &octaves[(i - 1)*MAX_OCTAVE_SIZE],
                    octavesW[i-1]);
     }
 

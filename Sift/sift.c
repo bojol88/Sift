@@ -24,7 +24,7 @@ float dog_g[MAX_O][MAX_S - 1][MAX_OCTAVE_SIZE];
 void
 sift(unsigned char* img,
           int w, int h, char* out_filename,
-          unsigned char octaves[][MAX_OCTAVE_SIZE],
+          unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
           int* octavesW, int* octavesH,
           float scaleSpace[][MAX_S][MAX_OCTAVE_SIZE],
           float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
@@ -134,7 +134,7 @@ void AppelSift(unsigned char* input, int xsize, int ysize, unsigned char* r, uns
 	// Careful, this memory allocation is far from optimal.
 	// All octaves are given the same size as the original image
 	// octavesW_g[i] * octavesH_g[i] is the actual memory necessary for octave i
-	unsigned char octaves_g[MAX_O][MAX_OCTAVE_SIZE];
+	unsigned char octaves_g[MAX_O*MAX_OCTAVE_SIZE];
 
 	// difference of gaussians: equivalent with dynamic allocation
 	/*for(i = 0; i < NUMBER_OF_OCTAVES; i++){

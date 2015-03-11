@@ -80,7 +80,7 @@ write_ppm(unsigned char* r, unsigned char* g, unsigned char* b, int w, int h) {
         obuf[3*i + 1] = g[i];
         obuf[3*i + 2] = b[i];
     }
-	sprintf(filename, "Resultats2/%d.pgm", j);
+	sprintf(filename, "Resultats/%d.pgm", j);
 	j++;
     out_file = fopen(filename, "wb");
     fprintf(out_file, "P6\n");
