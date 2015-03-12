@@ -10,14 +10,14 @@ keypoint_orientation(SiftKeypoint* key, float *scaleImage,
 
 // Calculate the orientations of all the keypoints
 void
-orientation(pointList* keyPointList, float scaleSpace[][MAX_S][MAX_OCTAVE_SIZE],
+orientation(pointList* keyPointList, float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
             float sigmas[MAX_O*MAX_S], int* octavesW) {
     int i;
     for (i=0; i<keyPointList->size; i++) {
         SiftKeypoint* key = &keyPointList->list[i];
         int octave  = key->o;
         float scale = key->s;
-        float* scaleImage = scaleSpace[octave][(int)scale];
+        float* scaleImage = &scaleSpace[(octave*MAX_S+(int)scale)*MAX_OCTAVE_SIZE];
         float sigma = sigmas[octave*MAX_S+(int)scale];
         int octW = octavesW[octave];
         keypoint_orientation(key, scaleImage, sigma, octW);

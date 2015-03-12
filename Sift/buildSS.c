@@ -22,7 +22,7 @@ void g2d(float* target,
  ***************************************/
 
 void buildSS(unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
-             float scaleSpace[][MAX_S][MAX_OCTAVE_SIZE],
+			 float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
              int O, int S, 
              int* octavesW, int* octavesH, 
              float sigmas[MAX_O*MAX_S]){
@@ -32,7 +32,7 @@ void buildSS(unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
     for(i = 0; i < O; i++){
         for(j = 0; j < S; j++){
             // 2D Gaussian
-            g2d(scaleSpace[i][j], 
+            g2d(&scaleSpace[(i*MAX_S+j)*MAX_OCTAVE_SIZE], 
                 &octaves[i*MAX_OCTAVE_SIZE],
                 octavesW[i],
                 octavesH[i],
