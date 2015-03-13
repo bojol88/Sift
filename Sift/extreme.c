@@ -32,7 +32,7 @@ void checkEdge(float *dogImg,
  ***********************************************/
 
 void extreme(pointList* keyPointList,
-             float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
+			 float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
              int O, int S,
              int* octavesW, int* octavesH){
 
@@ -77,9 +77,9 @@ void extreme(pointList* keyPointList,
         for(j = 1; j < S-2; j++){
             w = octavesW[i];
             h = octavesH[i];
-            self = dog[i][j];
-            up = dog[i][j+1];
-            down = dog[i][j-1];
+            self = &dog[(i*(MAX_S-1)+j)*MAX_OCTAVE_SIZE];
+			up = &dog[(i*(MAX_S-1)+j + 1)*MAX_OCTAVE_SIZE];
+			down = &dog[(i*(MAX_S-1)+j - 1)*MAX_OCTAVE_SIZE];
             /**********************************
              * Patch:
              * Avoid points close to the border.
@@ -98,7 +98,7 @@ void extreme(pointList* keyPointList,
                                  peakThres,
                                  &flagExtrema);
                     if(flagExtrema == 1){
-                        checkEdge(dog[i][j],
+						checkEdge(&dog[(i*(MAX_S-1)+j)*MAX_OCTAVE_SIZE],
                                   w,
                                   ii, jj,
                                   &flagEdge);

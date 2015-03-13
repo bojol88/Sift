@@ -39,6 +39,4 @@
 *.suo
 
 # Folders
-Debug/*
-data/*
-qtcreator/*
+Debug/*.*

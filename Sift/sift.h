@@ -78,7 +78,7 @@ void sift(unsigned char* img,
           unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
           int* octavesW, int* octavesH,
 		  float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
-          float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
+		  float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
 		  pointList* keyPointList, int O, int S, unsigned char* r, unsigned char* g, unsigned char* b);
 
 void buildOB(unsigned char* img,
@@ -92,13 +92,13 @@ void buildSS(unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
              int* octavesW, int* octavesH,
              float sigmas[MAX_O*MAX_S]);
 
-void DoG(float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
+void DoG(float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
 		 float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
          int O, int S,
          int* octavesW, int* octavesH);
 
 void extreme(pointList* keyPointList,
-             float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
+			 float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
              int O, int S,
              int* octavesW, int* octavesH);
 

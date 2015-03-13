@@ -10,7 +10,7 @@
 float scaleSpace_g[MAX_O*MAX_S*MAX_OCTAVE_SIZE];
 
 // difference of gaussians
-float dog_g[MAX_O][MAX_S - 1][MAX_OCTAVE_SIZE];
+float dog_g[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE];
 
 
 void
@@ -19,7 +19,7 @@ sift(unsigned char* img,
           unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
           int* octavesW, int* octavesH,
 		  float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
-          float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
+		  float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
 		  pointList* keyPointList, int O, int S, unsigned char* r, unsigned char* g, unsigned char* b) {
   
     /************************

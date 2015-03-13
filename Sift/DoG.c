@@ -14,8 +14,8 @@
  * octavesH: output, height of each octave
  **********************************************/
 
-void DoG(float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
-         float scaleSpace[][MAX_S][MAX_OCTAVE_SIZE],
+void DoG(float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
+         float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
          int O, int S,
          int* octavesW, int* octavesH){
   
@@ -27,20 +27,11 @@ void DoG(float dog[][MAX_S-1][MAX_OCTAVE_SIZE],
             for(ii = 0; ii < octavesH[i]; ii++){
                 for(jj = 0; jj < octavesW[i]; jj++){
                     // dog = upper scale - lower scale
-                    dog
-                        [i]
-                        [j]
-                        [ii*octavesW[i]+jj] 
+                    dog[(i*(MAX_S-1)+j)*MAX_OCTAVE_SIZE+ii*octavesW[i]+jj] 
                         =
-                        scaleSpace
-                        [i]
-                        [j+1]
-                        [ii*octavesW[i]+jj] 
+                        scaleSpace[(i*MAX_S+(j+1))*MAX_OCTAVE_SIZE+ii*octavesW[i]+jj] 
                         -
-                        scaleSpace
-                        [i]
-                        [j]
-                        [ii*octavesW[i]+jj];
+                        scaleSpace[(i*MAX_S+j)*MAX_OCTAVE_SIZE+ii*octavesW[i]+jj];
                 }
             }
         }
