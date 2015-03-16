@@ -75,29 +75,25 @@ extern float* grad_buffer;
 
 
 void buildOB(unsigned char* img,
-             unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
-             int O,
+             unsigned char* octaves,
              int* octavesW, int* octavesH);
 
-void buildSS(unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
-			 float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
-             int O, int S,
+void buildSS(unsigned char* octaves,
+			 float* scaleSpace,
              int* octavesW, int* octavesH,
-             float sigmas[MAX_O*MAX_S]);
+             float* sigmas);
 
-void DoG(float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
-		 float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
-         int O, int S,
+void DoG(float* dog,
+		 float* scaleSpace,
          int* octavesW, int* octavesH);
 
 void extreme(pointList* keyPointList,
-			 float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
-             int O, int S,
+			 float * dog,
              int* octavesW, int* octavesH);
 
 void orientation(pointList* keyPointList,
-				 float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
-                 float sigmas[MAX_O*MAX_S],
+				 float* scaleSpace ,
+                 float* sigmas ,
                  int* octavesW);
 
 void write_keypoints(FILE* fp,
@@ -107,7 +103,7 @@ void write_keypoints(FILE* fp,
 void  render(unsigned char* img,
              int* octavesW, int* octavesH,
              pointList* keyPointList,
-			 float sigmas[MAX_O*MAX_S], unsigned char* r, unsigned char* g, unsigned char* b);
+			 float * sigmas, unsigned char* r, unsigned char* g, unsigned char* b);
 
 
 void Sift(unsigned char* input, int xsize, int ysize, unsigned char* r, unsigned char* g, unsigned char* b);

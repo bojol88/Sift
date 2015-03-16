@@ -33,7 +33,6 @@ void checkEdge(float *dogImg,
 
 void extreme(pointList* keyPointList,
 			 float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
-             int O, int S,
              int* octavesW, int* octavesH){
 
     // common variables
@@ -64,17 +63,17 @@ void extreme(pointList* keyPointList,
     // radius of orientation window
     float radius;
     // gaussian sigmas at each scale
-    for(i = 0; i < O; i++){
-        for(j = 0; j < S; j++){
+    for(i = 0; i < NUMBER_OF_OCTAVES; i++){
+        for(j = 0; j < NUMBER_OF_SCALES; j++){
             sigmas[i][j] = 
                 sigma0 * 
-                pow(sqrt(2.0f), (float)j/(float)(S-3));
+                pow(sqrt(2.0f), (float)j/(float)(NUMBER_OF_SCALES-3));
         }
     }
 
   
-    for(i = 0; i < O; i++){
-        for(j = 1; j < S-2; j++){
+    for(i = 0; i < NUMBER_OF_OCTAVES; i++){
+        for(j = 1; j < NUMBER_OF_SCALES-2; j++){
             w = octavesW[i];
             h = octavesH[i];
             self = &dog[(i*(MAX_S-1)+j)*MAX_OCTAVE_SIZE];

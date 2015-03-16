@@ -21,7 +21,6 @@ void downsample(unsigned char* target,
 
 void buildOB(unsigned char* img,
              unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
-             int O,
              int* octavesW, int* octavesH){
 
     // common variables
@@ -32,7 +31,7 @@ void buildOB(unsigned char* img,
            octavesW[0] * octavesH[0] *
            sizeof(unsigned char));
     // downsample for octave 1 to O
-    for(i = 1; i < O; i++){
+    for(i = 1; i < NUMBER_OF_OCTAVES; i++){
         downsample(&octaves[i*MAX_OCTAVE_SIZE],
                    octavesW[i], octavesH[i],
 				   &octaves[(i - 1)*MAX_OCTAVE_SIZE],
