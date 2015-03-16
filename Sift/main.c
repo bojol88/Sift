@@ -13,7 +13,7 @@ int
 main(int argc, char* argv[]) {
 
 	int xsize=352, ysize=288;
-
+	int i=1;
 	unsigned char* input = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* tmp = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* r = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
@@ -28,9 +28,11 @@ main(int argc, char* argv[]) {
 	{
 		readYUV(xsize, ysize, y, u, v);
 
-		AppelSift(y, xsize, ysize,r,g,b);
-
+		Sift(y, xsize, ysize,r,g,b);
+		
 		write_ppm(r, g, b, xsize, ysize);
+
+		printf("%d ", i); i++; // To see that's running !
 	}
 
     return 0;

@@ -73,13 +73,6 @@ extern float* grad_buffer;
  * Functions
  ***************************************/
 
-void sift(unsigned char* img,
-          int w, int h, char* out_filename,
-          unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
-          int* octavesW, int* octavesH,
-		  float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
-		  float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
-		  pointList* keyPointList, int O, int S, unsigned char* r, unsigned char* g, unsigned char* b);
 
 void buildOB(unsigned char* img,
              unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
@@ -111,13 +104,15 @@ void write_keypoints(FILE* fp,
                      SiftKeypoint* keys,
                      int n);
 
-void  render(unsigned char* img, char* out_filename,
+void  render(unsigned char* img,
              int* octavesW, int* octavesH,
              pointList* keyPointList,
 			 float sigmas[MAX_O*MAX_S], unsigned char* r, unsigned char* g, unsigned char* b);
 
 
-void AppelSift(unsigned char* input, int xsize, int ysize, unsigned char* r, unsigned char* g, unsigned char* b);
+void Sift(unsigned char* input, int xsize, int ysize, unsigned char* r, unsigned char* g, unsigned char* b);
+
+void InitSift(int xsize, int ysize, int * octavesW_g, int * octavesH_g, float * sigmas);
 
 #endif//_SIFT_H_
 
