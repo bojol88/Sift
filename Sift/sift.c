@@ -56,6 +56,8 @@ void Sift(unsigned char* input, unsigned char* yCP, int xsize, int ysize, unsign
 
 	extreme(&keyPointList_g, dog_g, octavesW_g, octavesH_g);
 
+	Test_Extrem(&keyPointList_g);
+
 	orientation(&keyPointList_g, &keyPointListCP_g, scaleSpaceCP_g, sigmas, octavesW_g);
 
 	render(yCP, octavesW_g, octavesH_g, &keyPointListCP_g, sigmas, r, g, b);

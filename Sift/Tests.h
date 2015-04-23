@@ -9,6 +9,7 @@ void Test_SS(float* scaleSpace);
 
 void Test_DoG(float* DoG);
 
+void Test_Extrem(pointList* KeyPointList);
 
 
 #endif
