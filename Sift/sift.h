@@ -80,6 +80,7 @@ void buildOB(unsigned char* img,
 
 void buildSS(unsigned char* octaves,
 			 float* scaleSpace,
+			 float* scaleSpaceCP,
              int* octavesW, int* octavesH,
              float* sigmas);
 
@@ -92,6 +93,7 @@ void extreme(pointList* keyPointList,
              int* octavesW, int* octavesH);
 
 void orientation(pointList* keyPointList,
+				 pointList* keyPointListCP,
 				 float* scaleSpace ,
                  float* sigmas ,
                  int* octavesW);
@@ -106,7 +108,7 @@ void  render(unsigned char* img,
 			 float * sigmas, unsigned char* r, unsigned char* g, unsigned char* b);
 
 
-void Sift(unsigned char* input, int xsize, int ysize, unsigned char* r, unsigned char* g, unsigned char* b);
+void Sift(unsigned char* input, unsigned char* yCP, int xsize, int ysize, unsigned char* r, unsigned char* g, unsigned char* b);
 
 void InitSift(int xsize, int ysize, int * octavesW_g, int * octavesH_g, float * sigmas);
 

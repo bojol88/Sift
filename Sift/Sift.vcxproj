@@ -21,11 +21,13 @@
     <ClCompile Include="ori.c" />
     <ClCompile Include="render.c" />
     <ClCompile Include="sift.c" />
+    <ClCompile Include="Tests.c" />
     <ClCompile Include="yuvRead.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="img_io.h" />
     <ClInclude Include="sift.h" />
+    <ClInclude Include="Tests.h" />
     <ClInclude Include="yuvRead.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

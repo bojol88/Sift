@@ -23,6 +23,7 @@ void g2d(float* target,
 
 void buildSS(unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
 			 float scaleSpace[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
+			 float scaleSpaceCP[MAX_O*MAX_S*MAX_OCTAVE_SIZE],
              int* octavesW, int* octavesH, 
              float sigmas[MAX_O*MAX_S]){
 
@@ -36,6 +37,12 @@ void buildSS(unsigned char octaves[MAX_O*MAX_OCTAVE_SIZE],
                 octavesW[i],
                 octavesH[i],
                 sigmas[i*MAX_S+j]);
+			// copie for PREESM
+			g2d(&scaleSpaceCP[(i*MAX_S + j)*MAX_OCTAVE_SIZE],
+				&octaves[i*MAX_OCTAVE_SIZE],
+				octavesW[i],
+				octavesH[i],
+				sigmas[i*MAX_S + j]);
         }
     }
   

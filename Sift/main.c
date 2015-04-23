@@ -20,15 +20,16 @@ main(int argc, char* argv[]) {
 	unsigned char* g = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* b = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* y = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
+	unsigned char* yCP = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* u = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 	unsigned char* v = (unsigned char*)malloc(xsize * ysize * sizeof(unsigned char));
 
 	initReadYUV(xsize, ysize);
 	while (1)
 	{
-		readYUV(xsize, ysize, y, u, v);
+		readYUV(xsize, ysize, y, yCP, u, v);
 
-		Sift(y, xsize, ysize,r,g,b);
+		Sift(y,yCP, xsize, ysize,r,g,b);
 		
 		write_ppm(r, g, b, xsize, ysize);
 

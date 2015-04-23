@@ -41,6 +41,6 @@ void initReadYUV(int xsize, int ysize);
 * param v
 *       Destination of the V component read from the file
 */
-void readYUV(int xsize, int ysize, unsigned char *y, unsigned char *u, unsigned char *v);
+void readYUV(int xsize, int ysize, unsigned char *y, unsigned char *yCP, unsigned char *u, unsigned char *v);
 
 #endif
