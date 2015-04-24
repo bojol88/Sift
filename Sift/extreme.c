@@ -31,6 +31,8 @@ void checkEdge(float *dogImg,
  * octavesH: output, height of each octave
  ***********************************************/
 
+static int Test = 1; // Pour le test PREESM
+
 void extreme(pointList* keyPointList,
 			 float dog[MAX_O*(MAX_S - 1)*MAX_OCTAVE_SIZE],
              int* octavesW, int* octavesH){
@@ -47,6 +49,25 @@ void extreme(pointList* keyPointList,
     int flagExtrema;
     // flag for edge
     int flagEdge;
+
+	// Pour les Tests "pour PREESM"
+	FILE* out_file;
+	FILE* out_file2;
+	char filename[256], filename2[256];
+	sprintf(filename, "Tests/Extrem_2/%d.txt", Test);
+	sprintf(filename2, "Tests/Extrem_3/%d.txt", Test);
+	Test++;
+	out_file = fopen(filename, "wb");
+	if (!out_file){
+		fprintf(stderr, "Fail to open file: %s\n", filename);
+		exit(1);
+	}
+	out_file2 = fopen(filename2, "wb");
+	if (!out_file2){
+		fprintf(stderr, "Fail to open file: %s\n", filename2);
+		exit(1);
+	}
+	// Fin de "Pour Preesm"
 
     /********************************************
      * Patch:
@@ -97,11 +118,17 @@ void extreme(pointList* keyPointList,
                                  peakThres,
                                  &flagExtrema);
                     if(flagExtrema == 1){
+
+						fprintf(out_file, "Octaves %d - Scales %d - (%d,%d)\n", i, j, ii, jj); // Test pour PREESM
+
 						checkEdge(&dog[(i*(MAX_S-1)+j)*MAX_OCTAVE_SIZE],
                                   w,
                                   ii, jj,
                                   &flagEdge);
                         if(flagEdge == 1){
+
+							fprintf(out_file2, "Octaves %d - Scales %d - (%d,%d)\n", i, j, ii, jj); // Test pour PREESM
+
                             // insert
                             SiftKeypoint* tmp = &keyPointList->list[keyPointList->size];
                             tmp->o =
@@ -125,7 +152,9 @@ void extreme(pointList* keyPointList,
                 }
             }
         }
-    }
+	}
+	fclose(out_file); // Pour les Tests pour PREESM
+	fclose(out_file2); // Pour les Tests pour PREESM
 }
 
 /**********************************************
